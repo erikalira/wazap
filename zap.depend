@@ -1,0 +1,216 @@
+# depslib dependency file v1.0
+1555959436 source:/home/aluno/Downloads/zap/zap/agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+
+1555434621 /home/aluno/Downloads/zap/zap/agenda.h
+
+1555959847 source:/home/aluno/Downloads/zap/zap/client_tcp.c
+	<stdio.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netdb.h>
+	<arpa/inet.h>
+	<string.h>
+	<stdlib.h>
+
+1555960564 source:/home/aluno/Downloads/zap/zap/main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+
+1555959574 source:/home/aluno/Downloads/zap/zap/server_tcp.c
+	<stdio.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<stdlib.h>
+	<unistd.h>
+	<string.h>
+
+1555959717 source:/home/aluno/Downloads/zap/zap/main_agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+
+1555959436 /home/aluno/Downloads/zap/zap/agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+
+1556225940 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556225977 c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\agenda.h
+
+1555959847 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\client_tcp.c
+	<stdio.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netdb.h>
+	<arpa/inet.h>
+	<string.h>
+	<stdlib.h>
+
+1555959574 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\server_tcp.c
+	<stdio.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<stdlib.h>
+	<unistd.h>
+	<string.h>
+
+1556233565 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conta.h"
+	"contato.h"
+	"menus.h"
+
+1556225940 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\main_agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556225230 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\cadastro.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556225353 c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\cadastro.h
+
+1556039247 source:c:\users\aluno\downloads\zap\agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+
+1555988148 c:\users\aluno\downloads\zap\agenda.h
+
+1555990913 source:c:\users\aluno\downloads\zap\cadastro.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"cadastro.h"
+
+1555990935 c:\users\aluno\downloads\zap\cadastro.h
+
+1556039046 source:c:\users\aluno\downloads\zap\main_agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+
+1556038978 source:c:\users\aluno\downloads\zap\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+
+1556059318 source:c:\users\aluno\downloads\zap1.0.4\zap\agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556059067 c:\users\aluno\downloads\zap1.0.4\zap\agenda.h
+
+1556059318 source:c:\users\aluno\downloads\zap1.0.4\zap\cadastro.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556058822 c:\users\aluno\downloads\zap1.0.4\zap\cadastro.h
+
+1556059689 source:c:\users\aluno\downloads\zap1.0.4\zap\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+
+1556059689 source:c:\users\aluno\downloads\zap1.0.4\zap\main_agenda.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556059484 source:c:\users\aluno\downloads\zap1.0.4\zap\main_cadastro.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556059624 source:c:\users\aluno\downloads\zap1.0.4\zap\menus.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1556059267 c:\users\aluno\downloads\zap1.0.4\zap\menus.h
+
+1556233517 c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\menus.h
+
+1556045084 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\main_cadastro.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"agenda.h"
+	"cadastro.h"
+	"menus.h"
+
+1556231648 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\menus.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"menus.h"
+
+1556232456 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\conta.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conta.h"
+	"contato.h"
+	"menus.h"
+
+1556225353 c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\conta.h
+
+1556233494 c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\contato.h
+
+1556233215 source:c:\users\erika\documents\mc\p3 2018.2\lp1\.projeto nota 3 zap nutella\zap\contato.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conta.h"
+	"contato.h"
+	"menus.h"
+

@@ -1,0 +1,13 @@
+
+obj/Debug/agenda.o
+obj/Debug/cadastro.o
+obj/Debug/client_tcp.o
+obj/Debug/conta.o
+obj/Debug/contato.o
+obj/Debug/main.o
+obj/Debug/main_agenda.o
+obj/Debug/main_cadastro.o
+obj/Debug/menus.o
+obj/Debug/server_tcp.o
+*.exe
+bin/Debug/zap
