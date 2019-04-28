@@ -11,6 +11,6 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro);
 
 void banco_usuarios(char op[]);
 
-void login (tUsuario u[]);
+void login (tUsuario u[], int contador_cadastro);
 
 #endif // CADASTRO_H_INCLUDED

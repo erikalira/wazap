@@ -62,7 +62,7 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     //--------------------***CONFIRMACAO DE CADASTRO***-----------------------
     printf("\n\nnome da pessoa incluida:%s\n",u[*contador_cadastro].nome);
     (*contador_cadastro)++;
-    printf("tamanho lista:%d\n",*contador_cadastro);
+    printf("No de Usuarios cadastrados:%d\n", (*contador_cadastro)-1  );
     //-------------------------------------------------------------------------
 
 
@@ -86,14 +86,14 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     rename("dados/temp.txt", "dados/contas.txt");
     //---------------------DADOS SALVOS NO ARQUIVO--------------------------------
 
-    printf("\n\n\tteste: CADASTRADO COM SUCESSO!\n\n\n");
+    printf("\n\n\tUSUARIO CADASTRADO COM SUCESSO!\n\n\n");
     //system("pause");
 }
 
 
 void banco_usuarios(char op[]) {
     int contador_cadastro=0;
-    struct usuario u[50];
+    struct usuario u[30];
     FILE *arquivo;
 
     arquivo = fopen("dados/contas.txt", "r+");
@@ -116,23 +116,32 @@ void banco_usuarios(char op[]) {
     if(strcmp(op,"cadastro")==0){
         cadastro_usuario(u, &contador_cadastro);
     }else if(strcmp(op,"login")==0){
-        login (u);
+        login (u, contador_cadastro);
     }
 }
 
 
-void login (tUsuario u[]){
+void login (tUsuario u[], int contador_cadastro){
     printf("\tLOGAR NA CONTA\n\n");
-//
-//    printf("Nome: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", u[*contador_cadastro].nome);
-//
-//    printf("Usuario: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", u[*contador_cadastro].username);
-//
-//    printf("Senha: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", u[*contador_cadastro].senha);
+    int i;
+    char username[20];
+    char senha[20];
+
+    printf("Usuario: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", username);
+
+    printf("Senha: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", senha);
+
+    for(i=1; i<=contador_cadastro ; i++){
+        if( strcmp( username, u[i].username ) ==0  ){
+            if(   strcmp( senha, u[i].senha ) ==0  ){
+                printf("LOGAR!!!");
+                agenda(u[i].username);
+            }
+        }
+    }
+
 };

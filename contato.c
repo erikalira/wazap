@@ -109,10 +109,14 @@ void remover_pessoa(tPessoa p[], int *contador){
     rename("dados/temp.txt", "dados/agenda.txt");
 }
 
-void agenda() {
+void agenda(char user[]) {
     int contador=0;
     struct pessoa p[50];
     FILE *arquivo;
+
+    cabecalho_zap();
+
+    printf("Bem vindx, %s\n", user);
 
     arquivo = fopen("dados/agenda.txt", "r+"); //ABRIR ARQUIVO
 
@@ -127,7 +131,7 @@ void agenda() {
 
     fclose(arquivo); //FECHAR ARQUIVO
 
-    cabecalho_zap();
+
 
     do{
         menu_agenda();

@@ -15,6 +15,6 @@ void listar_pessoas(tPessoa p[], int contador);
 
 void remover_pessoa(tPessoa p[], int *contador);
 
-void agenda();
+void agenda(char user[]);
 
 #endif // AGENDA_H_INCLUDED

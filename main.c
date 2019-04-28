@@ -8,9 +8,8 @@
 
 int main(){
 
-    cabecalho_zap();
-
     do{
+        cabecalho_zap();
         menu_login();
         printf("digite opcao:");
         scanf("%d", &op);
@@ -18,16 +17,10 @@ int main(){
         switch(op){
             case 1:
                 //LOGIN
-                printf("teste: Tem conta e quer fazer login\n");
-                printf("teste: Direcionando para login\n");
-                system("pause");
                 banco_usuarios("login");
                 break;
             case 2:
                 //CRIAR CONTA
-                printf("\n\nteste: Nao tem conta\n\n");
-                printf("\n\n\nVamos fazer uma conta!!!\n\n");
-                system("pause");
                 banco_usuarios("cadastro");
                 break;
             default:
@@ -42,7 +35,7 @@ int main(){
     }while(op!=3);
 
     cabecalho_zap();
-    printf("\n\n\n\nZAP FINALIZADO!!!\n\n\n\n\n");
+    printf("\n\n\n\n\t\tZAP FINALIZADO!!!\n\n\n\n\n");
     system("pause");
 
     return 0;
