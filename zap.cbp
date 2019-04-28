@@ -39,6 +39,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="contato.h" />
+		<Unit filename="headers.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

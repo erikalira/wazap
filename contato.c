@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-#include "conta.h"
-#include "contato.h"
-#include "menus.h"
-
-
+#include "headers.h"
 
 void agenda() {
     int op;

@@ -228,25 +228,20 @@
 
 1556423219 c:\users\erika\documents\github\wazap\menus.h
 
-1556423219 source:c:\users\erika\documents\github\wazap\contato.c
+1556424236 source:c:\users\erika\documents\github\wazap\contato.c
+	"headers.h"
+
+1556424236 source:c:\users\erika\documents\github\wazap\main.c
+	"headers.h"
+
+1556424236 source:c:\users\erika\documents\github\wazap\menus.c
+	"headers.h"
+
+1556424236 c:\users\erika\documents\github\wazap\headers.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	"conta.h"
 	"contato.h"
-	"menus.h"
-
-1556423229 source:c:\users\erika\documents\github\wazap\main.c
-	<stdio.h>
-	<string.h>
-	<stdlib.h>
-	"conta.h"
-	"contato.h"
-	"menus.h"
-
-1556422264 source:c:\users\erika\documents\github\wazap\menus.c
-	<stdio.h>
-	<string.h>
-	<stdlib.h>
 	"menus.h"
 

@@ -1,8 +1,6 @@
 #ifndef MENUS_H_INCLUDED
 #define MENUS_H_INCLUDED
 
-
-
 void menu_agenda();
 void cabecalho_zap();
 void menu_login();

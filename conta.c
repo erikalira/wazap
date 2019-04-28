@@ -9,15 +9,7 @@ ex: nome ="erika lira" salvar no arquivo como "erika.lira"
 2.
 
 */
-
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-#include "conta.h"
-#include "contato.h"
-#include "menus.h"
-
+#include "headers.h"
 
 void banco_usuarios(char op[]) {
     contador_cadastro=0;
