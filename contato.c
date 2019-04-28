@@ -7,62 +7,9 @@
 #include "menus.h"
 
 
-void logado(char user[]) {
-    contador=0;
-    //struct pessoa p[50];
-    FILE *arquivo;
-
-    do{
-        cabecalho_zap();
-
-        printf("Bem vindx, %s\n\n", user);
-
-        sprintf( banco_user_logado, "dados/contatos_%s.txt", user);
-
-        arquivo = fopen( banco_user_logado , "r+"); //ABRIR ARQUIVO
-
-        if(arquivo == NULL){
-            printf("arquivo nao foi aberto!\n");
-        }
-
-        while(!feof(arquivo)){
-            fscanf(arquivo, "%s %s %s ", p[contador].nome, p[contador].telefone, p[contador].ip);
-            contador++;
-        }
-
-        fclose(arquivo); //FECHAR ARQUIVO
-
-        menu_logado();
-
-        printf("digite opcao:");
-        scanf("%d",&op);
-
-        switch(op){
-            case 1:         //Gerenciar contas
-                break;
-            case 2:      agenda();      //Gerenciar contatos
-                break;
-            case 3:      //Gerenciar grupos
-                break;
-            case 4:         //Iniciar conversa
-                break;
-            default:
-                break;
-        }
-        if(op!=5){
-           system("pause");
-        }
-
-        system("cls");
-
-
-    }while(op!=5);
-    printf("\n\n\tteste: USUARIO DESLOGADO!\n\n\n");
-}
-
 
 void agenda() {
-
+    int op;
     do{
         cabecalho_zap();
         menu_agenda();

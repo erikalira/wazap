@@ -7,7 +7,7 @@
 #include "menus.h"
 
 int main(){
-
+    int op;
     do{
         cabecalho_zap();
         menu_login();

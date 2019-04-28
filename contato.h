@@ -13,14 +13,14 @@ char banco_user_logado[50];
 
 int contador;
 
+void agenda();
+
 void incluir_pessoa(tPessoa p[], int *contador);
 
 void listar_pessoas(tPessoa p[], int contador);
 
 void remover_pessoa(tPessoa p[], int *contador);
 
-void agenda();
 
-void logado(char user[]);
 
 #endif // AGENDA_H_INCLUDED

@@ -20,7 +20,7 @@ ex: nome ="erika lira" salvar no arquivo como "erika.lira"
 
 
 void banco_usuarios(char op[]) {
-    int contador_cadastro=0;
+    contador_cadastro=0;
     FILE *arquivo;
 
     arquivo = fopen("dados/contas.txt", "r+");
@@ -46,37 +46,6 @@ void banco_usuarios(char op[]) {
         login (u, contador_cadastro);
     }
 }
-
-
-void login (tUsuario u[], int contador_cadastro){
-    printf("\tLOGAR NA CONTA\n\n");
-    int i;
-    char username[20];
-    char senha[20];
-    int no_user=0;
-
-    printf("Usuario: ");
-    setbuf(stdin,NULL);
-    scanf("%[^\n]s", username);
-
-    printf("Senha: ");
-    setbuf(stdin,NULL);
-    scanf("%[^\n]s", senha);
-
-    for(i=1; i<=contador_cadastro ; i++){
-        if( strcmp( username, u[i].username ) ==0  ){
-            if(   strcmp( senha, u[i].senha ) ==0  ){
-                printf("LOGAR!!!");
-                logado(u[i].username);
-                no_user=1;
-            }
-        }
-    }
-
-    if(no_user==0)
-        printf("\n\nUSUARIO E/OU SENHA INCORRETX\n\n");
-
-};
 
 
 void cadastro_usuario(tUsuario u[], int *contador_cadastro){
@@ -149,6 +118,143 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
 
     printf("\n\n\tUSUARIO CADASTRADO COM SUCESSO!\n\n\n");
     //system("pause");
+}
+
+
+void login (tUsuario u[], int contador_cadastro){
+    printf("\tLOGAR NA CONTA\n\n");
+    int i;
+    char username[20];
+    char senha[20];
+    int no_user=0;
+
+    printf("Usuario: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", username);
+
+    printf("Senha: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", senha);
+
+    for(i=1; i<=contador_cadastro ; i++){
+        if( strcmp( username, u[i].username ) ==0  ){
+            if(   strcmp( senha, u[i].senha ) ==0  ){
+                printf("LOGAR!!!");
+                logado(u[i].username);
+                no_user=1;
+            }
+        }
+    }
+
+    if(no_user==0)
+        printf("\n\nUSUARIO E/OU SENHA INCORRETX\n\n");
+
+};
+
+
+void logado(char user[]) {
+    contador=0;
+    int op;
+    //struct pessoa p[50];
+    FILE *arquivo;
+
+    do{
+        cabecalho_zap();
+
+        printf("Bem vindx, %s\n\n", user);
+
+        sprintf( banco_user_logado, "dados/contatos_%s.txt", user);
+
+        arquivo = fopen( banco_user_logado , "r+"); //ABRIR ARQUIVO
+
+        if(arquivo == NULL){
+            printf("arquivo nao foi aberto!\n");
+        }
+
+        while(!feof(arquivo)){
+            fscanf(arquivo, "%s %s %s ", p[contador].nome, p[contador].telefone, p[contador].ip);
+            contador++;
+        }
+
+        fclose(arquivo); //FECHAR ARQUIVO
+
+        menu_logado();
+
+        printf("digite opcao:");
+        scanf("%d",&op);
+
+        switch(op){
+            case 1:      contas();   //Gerenciar contas
+                break;
+            case 2:      agenda();      //Gerenciar contatos
+                break;
+            case 3:      //Gerenciar grupos
+                break;
+            case 4:         //Iniciar conversa
+                break;
+            default:
+                break;
+        }
+
+        system("cls");
+
+
+    }while(op!=5);
+    printf("\n\n\tteste: USUARIO DESLOGADO!\n\n\n");
+}
+
+
+void contas(){
+    int op;
+    do{
+        cabecalho_zap();
+        menu_contas();
+        printf("digite opcao:");
+        scanf("%d", &op);
+
+        switch(op){
+            case 1:
+                //CRIAR CONTA
+                banco_usuarios("cadastro");
+                break;
+            case 2:
+                //EDITAR CONTA
+
+                break;
+            case 3:
+                //LISTA DE CONTAS
+                listar_usuarios();
+                break;
+            case 4:
+                //EXCLUI CONTA
+
+                break;
+            default:
+                break;
+        }
+        if(op!=5){
+           system("pause");
+        }
+
+        system("cls");
+
+    }while(op!=5);
+
+
+}
+
+
+void listar_usuarios(){
+    int i;
+    cabecalho_zap();
+    printf("\n\n\tLISTA DE USUARIOS\n\n");
+    for(i=1;i<contador_cadastro;i++){
+        printf("CONTATO %d:\n",i);
+        printf("nome: %s\n", u[i].nome);
+        printf("username: %s\n", u[i].username);
+        printf("\n");
+    }
+    printf("\n\n");
 }
 
 
