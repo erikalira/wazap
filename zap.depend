@@ -214,3 +214,39 @@
 	"contato.h"
 	"menus.h"
 
+1556419772 source:c:\users\erika\documents\github\wazap\conta.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conta.h"
+	"contato.h"
+	"menus.h"
+
+1556417921 c:\users\erika\documents\github\wazap\conta.h
+
+1556416911 c:\users\erika\documents\github\wazap\contato.h
+
+1556413795 c:\users\erika\documents\github\wazap\menus.h
+
+1556419449 source:c:\users\erika\documents\github\wazap\contato.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conta.h"
+	"contato.h"
+	"menus.h"
+
+1556409431 source:c:\users\erika\documents\github\wazap\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conta.h"
+	"contato.h"
+	"menus.h"
+
+1556417418 source:c:\users\erika\documents\github\wazap\menus.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"menus.h"
+

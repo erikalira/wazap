@@ -7,7 +7,11 @@ typedef struct pessoa{
     char ip[20];
 } tPessoa;
 
+struct pessoa p[50];
 
+char banco_user_logado[50];
+
+int contador;
 
 void incluir_pessoa(tPessoa p[], int *contador);
 
@@ -15,6 +19,8 @@ void listar_pessoas(tPessoa p[], int contador);
 
 void remover_pessoa(tPessoa p[], int *contador);
 
-void agenda(char user[]);
+void agenda();
+
+void logado(char user[]);
 
 #endif // AGENDA_H_INCLUDED

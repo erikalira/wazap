@@ -7,6 +7,9 @@ typedef struct usuario{
     char senha[20];
 } tUsuario;
 
+
+struct usuario u[30];
+
 void cadastro_usuario(tUsuario u[], int *contador_cadastro);
 
 void banco_usuarios(char op[]);

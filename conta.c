@@ -18,6 +18,67 @@ ex: nome ="erika lira" salvar no arquivo como "erika.lira"
 #include "contato.h"
 #include "menus.h"
 
+
+void banco_usuarios(char op[]) {
+    int contador_cadastro=0;
+    FILE *arquivo;
+
+    arquivo = fopen("dados/contas.txt", "r+");
+
+    if(arquivo == NULL){
+        printf("arquivo nao foi aberto!\n");
+    }
+
+    while(!feof(arquivo)){
+        fscanf(arquivo, "%s %s %s\n",       u[contador_cadastro].nome,
+                                            u[contador_cadastro].username,
+                                            u[contador_cadastro].senha);
+        contador_cadastro++;
+    }
+
+    fclose(arquivo);
+
+    cabecalho_zap();
+
+    if(strcmp(op,"cadastro")==0){
+        cadastro_usuario(u, &contador_cadastro);
+    }else if(strcmp(op,"login")==0){
+        login (u, contador_cadastro);
+    }
+}
+
+
+void login (tUsuario u[], int contador_cadastro){
+    printf("\tLOGAR NA CONTA\n\n");
+    int i;
+    char username[20];
+    char senha[20];
+    int no_user=0;
+
+    printf("Usuario: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", username);
+
+    printf("Senha: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", senha);
+
+    for(i=1; i<=contador_cadastro ; i++){
+        if( strcmp( username, u[i].username ) ==0  ){
+            if(   strcmp( senha, u[i].senha ) ==0  ){
+                printf("LOGAR!!!");
+                logado(u[i].username);
+                no_user=1;
+            }
+        }
+    }
+
+    if(no_user==0)
+        printf("\n\nUSUARIO E/OU SENHA INCORRETX\n\n");
+
+};
+
+
 void cadastro_usuario(tUsuario u[], int *contador_cadastro){
 
     int i=0;
@@ -91,57 +152,3 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
 }
 
 
-void banco_usuarios(char op[]) {
-    int contador_cadastro=0;
-    struct usuario u[30];
-    FILE *arquivo;
-
-    arquivo = fopen("dados/contas.txt", "r+");
-
-    if(arquivo == NULL){
-        printf("arquivo nao foi aberto!\n");
-    }
-
-    while(!feof(arquivo)){
-        fscanf(arquivo, "%s %s %s\n",       u[contador_cadastro].nome,
-                                            u[contador_cadastro].username,
-                                            u[contador_cadastro].senha);
-        contador_cadastro++;
-    }
-
-    fclose(arquivo);
-
-    cabecalho_zap();
-
-    if(strcmp(op,"cadastro")==0){
-        cadastro_usuario(u, &contador_cadastro);
-    }else if(strcmp(op,"login")==0){
-        login (u, contador_cadastro);
-    }
-}
-
-
-void login (tUsuario u[], int contador_cadastro){
-    printf("\tLOGAR NA CONTA\n\n");
-    int i;
-    char username[20];
-    char senha[20];
-
-    printf("Usuario: ");
-    setbuf(stdin,NULL);
-    scanf("%[^\n]s", username);
-
-    printf("Senha: ");
-    setbuf(stdin,NULL);
-    scanf("%[^\n]s", senha);
-
-    for(i=1; i<=contador_cadastro ; i++){
-        if( strcmp( username, u[i].username ) ==0  ){
-            if(   strcmp( senha, u[i].senha ) ==0  ){
-                printf("LOGAR!!!");
-                agenda(u[i].username);
-            }
-        }
-    }
-
-};

@@ -35,7 +35,7 @@ int main(){
     }while(op!=3);
 
     cabecalho_zap();
-    printf("\n\n\n\n\t\tZAP FINALIZADO!!!\n\n\n\n\n");
+    printf("\n\n\n\n\tZAP FINALIZADO!!!\n\n\n\n\n");
     system("pause");
 
     return 0;

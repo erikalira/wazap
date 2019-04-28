@@ -6,13 +6,102 @@
 #include "contato.h"
 #include "menus.h"
 
+
+void logado(char user[]) {
+    contador=0;
+    //struct pessoa p[50];
+    FILE *arquivo;
+
+    do{
+        cabecalho_zap();
+
+        printf("Bem vindx, %s\n\n", user);
+
+        sprintf( banco_user_logado, "dados/contatos_%s.txt", user);
+
+        arquivo = fopen( banco_user_logado , "r+"); //ABRIR ARQUIVO
+
+        if(arquivo == NULL){
+            printf("arquivo nao foi aberto!\n");
+        }
+
+        while(!feof(arquivo)){
+            fscanf(arquivo, "%s %s %s ", p[contador].nome, p[contador].telefone, p[contador].ip);
+            contador++;
+        }
+
+        fclose(arquivo); //FECHAR ARQUIVO
+
+        menu_logado();
+
+        printf("digite opcao:");
+        scanf("%d",&op);
+
+        switch(op){
+            case 1:         //Gerenciar contas
+                break;
+            case 2:      agenda();      //Gerenciar contatos
+                break;
+            case 3:      //Gerenciar grupos
+                break;
+            case 4:         //Iniciar conversa
+                break;
+            default:
+                break;
+        }
+        if(op!=5){
+           system("pause");
+        }
+
+        system("cls");
+
+
+    }while(op!=5);
+    printf("\n\n\tteste: USUARIO DESLOGADO!\n\n\n");
+}
+
+
+void agenda() {
+
+    do{
+        cabecalho_zap();
+        menu_agenda();
+
+        printf("digite opcao:");
+        scanf("%d",&op);
+
+        switch(op){
+            case 1:incluir_pessoa(p, &contador);
+                break;
+            case 2:listar_pessoas(p,contador);
+                break;
+            case 3:remover_pessoa(p,&contador);
+                break;
+            default:
+                break;
+        }
+        if(op!=4){
+           system("pause");
+        }
+
+        system("cls");
+    }while(op!=4);
+
+    printf("\n\n\tSaindo da agenda!\n\n\n");
+}
+
+
 void incluir_pessoa(tPessoa p[], int *contador){
 
     int i=0;
     FILE *arquivo;
     FILE *temp;
 
-    arquivo = fopen("dados/agenda.txt", "r+");
+    arquivo = fopen(banco_user_logado, "r+");
+
+    if(arquivo==0){
+        printf("arquivo nao foi aberto");;
+    }
 
     printf("\n\n\tINCLUIR PESSOA\n");
 
@@ -30,7 +119,7 @@ void incluir_pessoa(tPessoa p[], int *contador){
 
     printf("\n\nnome da pessoa incluida:%s\n",p[*contador].nome);
     (*contador)++;
-    printf("tamanho lista:%d\n",*contador);
+    printf("No de contatos: %d\n",(*contador)-1);
 
     temp = fopen("dados/temp.txt", "w+");
 
@@ -43,15 +132,16 @@ void incluir_pessoa(tPessoa p[], int *contador){
     fclose(temp);
 
     //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
-    remove("dados/agenda.txt");
-    rename("dados/temp.txt", "dados/agenda.txt");
+    remove(banco_user_logado);
+    rename("dados/temp.txt", banco_user_logado);
 }
+
 
 void listar_pessoas(tPessoa p[], int contador){
     int i;
     printf("\n\n\tLISTA DE PESSOAS\n\n");
-    for(i=0;i<contador;i++){
-        printf("CONTATO %d:\n",i+1);
+    for(i=1;i<contador;i++){
+        printf("CONTATO %d:\n",i);
         printf("nome: %s\n", p[i].nome);
         printf("telefone: %s\n", p[i].telefone);
         printf("ip: %s\n", p[i].ip);
@@ -59,6 +149,7 @@ void listar_pessoas(tPessoa p[], int contador){
     }
     printf("\n\n");
 }
+
 
 void remover_pessoa(tPessoa p[], int *contador){
     char remover[40];
@@ -69,7 +160,7 @@ void remover_pessoa(tPessoa p[], int *contador){
     FILE *arquivo;
     FILE *temp;
 
-    arquivo = fopen("dados/agenda.txt", "r+");
+    arquivo = fopen(banco_user_logado, "r+");
 
     printf("\n\n\tREMOVER PESSOA\n");
     printf("Nome: ");
@@ -105,57 +196,7 @@ void remover_pessoa(tPessoa p[], int *contador){
     fclose(temp);
 
     //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
-    remove("dados/agenda.txt");
-    rename("dados/temp.txt", "dados/agenda.txt");
+    remove(banco_user_logado);
+    rename("dados/temp.txt", banco_user_logado);
 }
 
-void agenda(char user[]) {
-    int contador=0;
-    struct pessoa p[50];
-    FILE *arquivo;
-
-    cabecalho_zap();
-
-    printf("Bem vindx, %s\n", user);
-
-    arquivo = fopen("dados/agenda.txt", "r+"); //ABRIR ARQUIVO
-
-    if(arquivo == NULL){
-        printf("arquivo nao foi aberto!\n");
-    }
-
-    while(!feof(arquivo)){
-        fscanf(arquivo, "%s %s %s ", p[contador].nome, p[contador].telefone, p[contador].ip);
-        contador++;
-    }
-
-    fclose(arquivo); //FECHAR ARQUIVO
-
-
-
-    do{
-        menu_agenda();
-
-        printf("digite opcao:");
-        scanf("%d",&op);
-
-        switch(op){
-            case 1:incluir_pessoa(p,&contador);
-                break;
-            case 2:listar_pessoas(p,contador);
-                break;
-            case 3:remover_pessoa(p,&contador);
-                break;
-            default:
-                break;
-        }
-        if(op!=4){
-           system("pause");
-        }
-
-        system("cls");
-    }while(op!=4);
-
-    printf("\n\n\tteste: AGENDA FECHADA!\n\n\n");
-    system("pause");
-}
