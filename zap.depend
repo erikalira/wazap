@@ -226,7 +226,7 @@
 
 1556421109 c:\users\erika\documents\github\wazap\contato.h
 
-1556423219 c:\users\erika\documents\github\wazap\menus.h
+1556424364 c:\users\erika\documents\github\wazap\menus.h
 
 1556424236 source:c:\users\erika\documents\github\wazap\contato.c
 	"headers.h"
@@ -237,11 +237,14 @@
 1556424236 source:c:\users\erika\documents\github\wazap\menus.c
 	"headers.h"
 
-1556424236 c:\users\erika\documents\github\wazap\headers.h
+1556427498 c:\users\erika\documents\github\wazap\headers.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	"conta.h"
 	"contato.h"
 	"menus.h"
+	"chat.h"
+
+1556427544 c:\users\erika\documents\github\wazap\chat.h
 

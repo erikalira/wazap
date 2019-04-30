@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="chat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="chat.h" />
 		<Unit filename="conta.c">
 			<Option compilerVar="CC" />
 		</Unit>

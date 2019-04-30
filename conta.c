@@ -6,8 +6,6 @@ soluções possiveis:
 a) colocar um outro caractere no espaço do nome para a leitura do fprintf ser corrigida
 ex: nome ="erika lira" salvar no arquivo como "erika.lira"
 
-2.
-
 */
 #include "headers.h"
 
@@ -182,7 +180,7 @@ void logado(char user[]) {
                 break;
             case 3:      //Gerenciar grupos
                 break;
-            case 4:         //Iniciar conversa
+            case 4:       escolher_conversa();  //Iniciar conversa
                 break;
             default:
                 break;

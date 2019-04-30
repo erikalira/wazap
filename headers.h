@@ -8,5 +8,6 @@
 #include "conta.h"
 #include "contato.h"
 #include "menus.h"
+#include "chat.h"
 
 #endif // HEADERS_H_INCLUDED

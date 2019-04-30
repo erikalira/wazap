@@ -26,16 +26,16 @@ void menu_logado()
 {
     printf("1-Gerenciar contas\n");
     printf("2-Gerenciar contatos \n");
-    printf("3-Gerenciar grupos\n");
-    printf("4-Iniciar conversa\n");
+    printf("3-Gerenciar grupos (EM CONSTRUCAO)\n");
+    printf("4-Iniciar conversa (EM CONSTRUCAO)\n");
     printf("5-Sair da conta!!!\n\n");
 }
 
 void menu_contas(){
     printf("\t GERENCIAR CONTAS\n\n");
     printf("1-Criar conta\n");
-    printf("2-Editar conta\n");
+    printf("2-Editar conta (EM CONSTRUCAO)\n");
     printf("3-Lista de contas\n");
-    printf("4-Excluir conta\n");
+    printf("4-Excluir conta(EM CONSTRUCAO)\n");
     printf("5-Voltar\n\n");
 }
