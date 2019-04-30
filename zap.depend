@@ -214,37 +214,49 @@
 	"contato.h"
 	"menus.h"
 
-1556423219 source:c:\users\erika\documents\github\wazap\conta.c
-	<stdio.h>
-	<string.h>
-	<stdlib.h>
-	"conta.h"
-	"contato.h"
-	"menus.h"
+1556605505 source:c:\users\erika\documents\github\wazap\conta.c
+	"headers.h"
 
 1556423011 c:\users\erika\documents\github\wazap\conta.h
 
 1556421109 c:\users\erika\documents\github\wazap\contato.h
 
-1556424364 c:\users\erika\documents\github\wazap\menus.h
+1556593282 c:\users\erika\documents\github\wazap\menus.h
 
 1556424236 source:c:\users\erika\documents\github\wazap\contato.c
 	"headers.h"
 
-1556424236 source:c:\users\erika\documents\github\wazap\main.c
+1556605632 source:c:\users\erika\documents\github\wazap\main.c
 	"headers.h"
 
-1556424236 source:c:\users\erika\documents\github\wazap\menus.c
+1556593531 source:c:\users\erika\documents\github\wazap\menus.c
 	"headers.h"
 
-1556427498 c:\users\erika\documents\github\wazap\headers.h
+1556598324 c:\users\erika\documents\github\wazap\headers.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
-	"conta.h"
-	"contato.h"
-	"menus.h"
-	"chat.h"
+	<winsock.h>
+	"headers/contato.h"
+	"headers/menus.h"
+	"headers/chat.h"
+	"headers/conta.h"
 
-1556427544 c:\users\erika\documents\github\wazap\chat.h
+1556592269 c:\users\erika\documents\github\wazap\chat.h
+
+1556606070 source:c:\users\erika\documents\github\wazap\chat.c
+	"headers.h"
+
+1556595615 c:\users\erika\documents\github\wazap\conexao.h
+
+1556595615 source:c:\users\erika\documents\github\wazap\conexao.c
+	"headers.h"
+
+1556423011 c:\users\erika\documents\github\wazap\headers\conta.h
+
+1556421109 c:\users\erika\documents\github\wazap\headers\contato.h
+
+1556593282 c:\users\erika\documents\github\wazap\headers\menus.h
+
+1556605505 c:\users\erika\documents\github\wazap\headers\chat.h
 

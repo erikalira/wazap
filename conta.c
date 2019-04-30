@@ -9,6 +9,8 @@ ex: nome ="erika lira" salvar no arquivo como "erika.lira"
 */
 #include "headers.h"
 
+
+
 void banco_usuarios(char op[]) {
     contador_cadastro=0;
     FILE *arquivo;
@@ -49,7 +51,7 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
 
     arquivo = fopen("dados/contas.txt", "r+");
 
-    //---------------***PEDIR AO USUARIO SEUS DADOS***-------------
+    //----***PEDIR AO USUARIO SEUS DADOS***----
     printf("\tCADASTRO USUARIO\n\n");
 
     printf("Nome: ");
@@ -63,9 +65,11 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     printf("Senha: ");
     setbuf(stdin,NULL);
     scanf("%[^\n]s", u[*contador_cadastro].senha);
-    //-------------------------------------------------------------
+    //-------------------------------------------
 
-    //---------------***CRIA UM ARQUIVO PARA ARMAZENAR CONTATOS DO USUARIO***-------------
+
+    //CRIA UM ARQUIVO PARA ARMAZENAR CONTATOS DO USUARIO
+
     //armazena o diretorio que o arquivo deve ser criado
     sprintf( arquivo_usuario, "dados/contatos_%s.txt", u[*contador_cadastro].username);
 
@@ -76,14 +80,14 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     fprintf(criar_banco, "nome telefone ip\n");
 
     fclose(criar_banco);
-    //-----------------------------ARQUIVO CRIADO---------------------------
+    //ARQUIVO CRIADO---------------------------
 
 
-    //--------------------***CONFIRMACAO DE CADASTRO***-----------------------
+    //--------------------***CONFIRMACAO DE CADASTRO***-------------------
     printf("\n\nnome da pessoa incluida:%s\n",u[*contador_cadastro].nome);
     (*contador_cadastro)++;
     printf("No de Usuarios cadastrados:%d\n", (*contador_cadastro)-1  );
-    //-------------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
 
     //-------------****SALVA OS DADOS NO ARQUIVO*****--------------------------
@@ -127,10 +131,10 @@ void login (tUsuario u[], int contador_cadastro){
     scanf("%[^\n]s", senha);
 
     for(i=1; i<=contador_cadastro ; i++){
-        if( strcmp( username, u[i].username ) ==0  ){
-            if(   strcmp( senha, u[i].senha ) ==0  ){
+        if( strcmp( username, u[i].username ) == 0  ){
+            if(   strcmp( senha, u[i].senha ) == 0  ){
                 printf("LOGAR!!!");
-                logado(u[i].username);
+                logado( u[i].username );
                 no_user=1;
             }
         }
@@ -142,7 +146,7 @@ void login (tUsuario u[], int contador_cadastro){
 };
 
 
-void logado(char user[]) {
+void logado( char user[] ) {
     contador=0;
     int op;
     //struct pessoa p[50];
@@ -180,7 +184,7 @@ void logado(char user[]) {
                 break;
             case 3:      //Gerenciar grupos
                 break;
-            case 4:       escolher_conversa();  //Iniciar conversa
+            case 4:       escolher_conversa (); //Iniciar conversa
                 break;
             default:
                 break;

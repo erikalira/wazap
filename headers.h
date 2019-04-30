@@ -4,10 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <winsock.h>
 
-#include "conta.h"
-#include "contato.h"
-#include "menus.h"
-#include "chat.h"
+#include "headers/contato.h"
+#include "headers/menus.h"
+#include "headers/chat.h"
+#include "headers/conta.h"
 
 #endif // HEADERS_H_INCLUDED

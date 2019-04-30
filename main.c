@@ -1,6 +1,7 @@
 #include "headers.h"
 
 int main(){
+    conectar();
     int op;
     do{
         cabecalho_zap();
@@ -31,6 +32,7 @@ int main(){
     cabecalho_zap();
     printf("\n\n\n\n\tZAP FINALIZADO!!!\n\n\n\n\n");
     system("pause");
+    desconectar();
 
     return 0;
 }

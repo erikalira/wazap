@@ -34,23 +34,23 @@
 		<Unit filename="chat.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="chat.h" />
 		<Unit filename="conta.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="conta.h" />
 		<Unit filename="contato.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="contato.h" />
 		<Unit filename="headers.h" />
+		<Unit filename="headers/chat.h" />
+		<Unit filename="headers/conta.h" />
+		<Unit filename="headers/contato.h" />
+		<Unit filename="headers/menus.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menus.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="menus.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
