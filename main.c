@@ -1,7 +1,19 @@
 #include "headers.h"
 
 int main(){
-    conectar();
+
+    cabecalho_zap();
+
+
+    printf("modo: cliente ou servidor\n");
+    printf("digite opcao:");
+
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", modo);
+
+    printf("Entrando no modo %s\n", modo);
+    system("pause");
+
     int op;
     do{
         cabecalho_zap();
@@ -32,7 +44,6 @@ int main(){
     cabecalho_zap();
     printf("\n\n\n\n\tZAP FINALIZADO!!!\n\n\n\n\n");
     system("pause");
-    desconectar();
 
     return 0;
 }

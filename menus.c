@@ -31,13 +31,21 @@ void menu_logado()
     printf("5-Sair da conta!!!\n\n");
 }
 
+void menu_logado_server()
+{
+    printf("1-Gerenciar contas\n");
+    printf("2-Gerenciar contatos \n");
+    printf("3-Gerenciar grupos (EM CONSTRUCAO)\n");
+    printf("4-Participar de uma conversa\n");
+    printf("5-Sair da conta!!!\n\n");
+}
+
 void menu_conversas()
 {
     printf("\t INICIAR CONVERSA\n\n");
-    printf("1-Conversar com o servidor\n");
-    printf("2-Conversar com contato (EM CONSTRUCAO)\n");
-    printf("3-Conversar com grupo (EM CONSTRUCAO)\n");
-    printf("4-Voltar\n\n");
+    printf("1-Iniciar conversa com contato\n");
+    printf("2-Iniciar conversa com grupo (EM CONSTRUCAO)\n");
+    printf("3-Voltar\n\n");
 }
 
 

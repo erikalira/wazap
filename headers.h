@@ -11,4 +11,6 @@
 #include "headers/chat.h"
 #include "headers/conta.h"
 
+char modo[10];
+
 #endif // HEADERS_H_INCLUDED

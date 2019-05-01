@@ -1,16 +1,29 @@
 #ifndef CHAT_H_INCLUDED
 #define CHAT_H_INCLUDED
 
-void escolher_conversa();
+//FUNCOES PARA O SERVIDOR
 
-void conversa_servidor ();
+void escolher_conversa_client();
 
-void conversa_contato();
+int conversa_contato_client();
 
-void conversa_grupo();
+void conversa_grupo_client();
 
-void conectar();
+void conectar_client();
 
-void desconectar();
+void desconectar_client();
+
+
+//FUNCOES PARA O SERVIDOR
+
+void escolher_conversa_server();
+
+void conversa_contato_server();
+
+void conversa_grupo_server();
+
+void conectar_server();
+
+void desconectar_server();
 
 #endif // CHAT_H_INCLUDED

@@ -9,8 +9,6 @@ ex: nome ="erika lira" salvar no arquivo como "erika.lira"
 */
 #include "headers.h"
 
-
-
 void banco_usuarios(char op[]) {
     contador_cadastro=0;
     FILE *arquivo;
@@ -152,27 +150,34 @@ void logado( char user[] ) {
     //struct pessoa p[50];
     FILE *arquivo;
 
-    do{
-        cabecalho_zap();
+    sprintf( banco_user_logado, "dados/contatos_%s.txt", user);
 
+    arquivo = fopen( banco_user_logado , "r+"); //ABRIR ARQUIVO
+
+    if(arquivo == NULL){
+        printf("arquivo nao foi aberto!\n");
+    }
+
+    while(!feof(arquivo)){
+        fscanf(arquivo, "%s %s %s ", p[contador].nome, p[contador].telefone, p[contador].ip);
+        contador++;
+    }
+
+    fclose(arquivo); //FECHAR ARQUIVO
+
+    do{
         printf("Bem vindx, %s\n\n", user);
 
-        sprintf( banco_user_logado, "dados/contatos_%s.txt", user);
+        cabecalho_zap();
 
-        arquivo = fopen( banco_user_logado , "r+"); //ABRIR ARQUIVO
+        if(  strcmp(modo,"cliente") == 0  ){
+            menu_logado();
+        }else if(  strcmp(modo,"servidor") == 0  ){
+            menu_logado_server();
 
-        if(arquivo == NULL){
-            printf("arquivo nao foi aberto!\n");
+        }else{
+            printf("Nao ACHOU NENUMA OPCAO DE MODDOO!!!");
         }
-
-        while(!feof(arquivo)){
-            fscanf(arquivo, "%s %s %s ", p[contador].nome, p[contador].telefone, p[contador].ip);
-            contador++;
-        }
-
-        fclose(arquivo); //FECHAR ARQUIVO
-
-        menu_logado();
 
         printf("digite opcao:");
         scanf("%d",&op);
@@ -184,7 +189,16 @@ void logado( char user[] ) {
                 break;
             case 3:      //Gerenciar grupos
                 break;
-            case 4:       escolher_conversa (); //Iniciar conversa
+            case 4:
+                if(  strcmp(modo,"cliente") == 0  ){
+                    printf("Entrando em -iniciar conversa- \n");
+                    system("pause");
+                    escolher_conversa_client(); //Iniciar conversa
+                }if(  strcmp(modo,"servidor") == 0  ){
+                    printf("Entrando em -participar de conversa- \n");
+                    system("pause");
+                    escolher_conversa_server(); //Participar de conversa
+                }
                 break;
             default:
                 break;
@@ -194,7 +208,7 @@ void logado( char user[] ) {
 
 
     }while(op!=5);
-    printf("\n\n\tteste: USUARIO DESLOGADO!\n\n\n");
+    printf("\n\nUSUARIO DESLOGADO!\n\n\n");
 }
 
 
