@@ -9,6 +9,10 @@ typedef struct usuario{
 
 int contador_cadastro;
 
+char banco_user_logado_contato[50];
+
+char banco_user_logado_grupo[50];
+
 struct usuario u[30];
 
 void cadastro_usuario(tUsuario u[], int *contador_cadastro);

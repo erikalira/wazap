@@ -96,7 +96,7 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     criar_banco = fopen(arquivo_usuario, "w");
 
     //salva uma primeira linha com 0 para evitar erro
-    fprintf(criar_banco, "0\n");
+    fprintf(criar_banco, "grupo 2\nfulano 2131\nciclano 12312\n");
 
     fclose(criar_banco);
     //---------------ARQUIVO CRIADO---------------------------
@@ -167,13 +167,14 @@ void login (tUsuario u[], int contador_cadastro){
 
 void logado( char user[] ) {
     contador=0;
+    contador_grupo=0;
     int op;
-    //struct pessoa p[50];
     FILE *arquivo;
+    FILE *arq;
 
-    sprintf( banco_user_logado, "dados/contatos_%s.txt", user);
-
-    arquivo = fopen( banco_user_logado , "r+"); //ABRIR ARQUIVO
+    //---------------***ARMAZENA OS CONTATOS NA ESTRUTURA***---------
+    sprintf( banco_user_logado_contato, "dados/contatos_%s.txt", user);
+    arquivo = fopen( banco_user_logado_contato , "r+"); //ABRIR ARQUIVO
 
     if(arquivo == NULL){
         printf("arquivo nao foi aberto!\n");
@@ -185,6 +186,28 @@ void logado( char user[] ) {
     }
 
     fclose(arquivo); //FECHAR ARQUIVO
+    //---------------ARMAZENADO---------
+
+    //---------------***ARMAZENA OS GRUPOS NA ESTRUTURA***---------
+    sprintf( banco_user_logado_grupo, "dados/grupos_%s.txt", user);
+    arq = fopen( banco_user_logado_grupo , "r+"); //ABRIR ARQUIVO
+
+    if(arq == NULL){
+        printf("arquivo nao foi aberto!\n");
+    }
+    int i;
+    while(!feof(arq)){
+        fscanf(arq, "%s %d ", g[contador_grupo].nome_grupo, &g[contador_grupo].tamanho_grupo);
+        for(i=0; i<g[contador_grupo].tamanho_grupo ; i++ ){
+            fscanf(arq, "%s %s ", g[contador_grupo].nome[i], g[contador_grupo].ip[i]);
+        }
+        contador_grupo++;
+    }
+
+    fclose(arq); //FECHAR ARQUIVO
+    //---------------ARMAZENADO---------
+
+
 
     do{
         printf("Bem vindx, %s\n\n", user);
@@ -194,13 +217,13 @@ void logado( char user[] ) {
         if(  strcmp(modo,"cliente") == 0  ){
             printf("1-Gerenciar contas\n");
             printf("2-Gerenciar contatos \n");
-            printf("3-Gerenciar grupos (EM CONSTRUCAO)\n");
+            printf("3-Gerenciar grupos\n");
             printf("4-Iniciar conversa\n");
             printf("5-Sair da conta!!!\n\n");
         }else if(  strcmp(modo,"servidor") == 0  ){
             printf("1-Gerenciar contas\n");
             printf("2-Gerenciar contatos \n");
-            printf("3-Gerenciar grupos (EM CONSTRUCAO)\n");
+            printf("3-Gerenciar grupos\n");
             printf("4-Participar de uma conversa\n");
             printf("5-Sair da conta!!!\n\n");
 
@@ -216,7 +239,7 @@ void logado( char user[] ) {
                 break;
             case 2:      agenda();      //Gerenciar contatos
                 break;
-            case 3:      //Gerenciar grupos
+            case 3:      agenda_grupo();//Gerenciar grupos
                 break;
             case 4:
                 if(  strcmp(modo,"cliente") == 0  ){

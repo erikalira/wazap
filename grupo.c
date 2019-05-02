@@ -8,7 +8,7 @@ void agenda_grupo() {
         printf("\t GERENCIAR GRUPOS\n\n");
         printf("1: Criar grupo\n");
         printf("2: Lista de grupo\n");
-        printf("3: Remover grupo\n");
+        printf("3: Remover grupo (EM CONSTRUCAO)\n");
         printf("4: voltar ao menu principal!!!\n\n");
 
         printf("digite opcao:");
@@ -36,61 +36,71 @@ void agenda_grupo() {
 
 
 void incluir_grupo(tGrupo g[], int *contador_grupo){
-//    int i=0;
-//    FILE *arquivo;
-//    FILE *temp;
-//
-//    arquivo = fopen(banco_user_logado, "r+");
-//
-//    if(arquivo==0){
-//        printf("arquivo nao foi aberto");;
-//    }
-//
-//    printf("\n\n\tINCLUIR PESSOA\n");
-//
-//    printf("Nome: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", p[*contador].nome);
-//
-//    printf("Telefone: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", p[*contador].telefone);
-//
-//    printf("IP: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", p[*contador].ip);
-//
-//    printf("\n\nnome da pessoa incluida:%s\n",p[*contador].nome);
-//    (*contador)++;
-//    printf("No de contatos: %d\n",(*contador)-1);
-//
-//    temp = fopen("dados/temp.txt", "w+");
-//
-//    while( i < (*contador) ){
-//        fprintf(temp, "%s %s %s\n", p[i].nome, p[i].telefone, p[i].ip);
-//        i++;
-//    }
-//
-//    fclose(arquivo);
-//    fclose(temp);
-//
-//    //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
-//    remove(banco_user_logado);
-//    rename("dados/temp.txt", banco_user_logado);
+    int i=0;
+    int j;
+    FILE *arquivo;
+    FILE *temp;
+
+    arquivo = fopen(banco_user_logado_grupo, "r+");
+
+    if(arquivo==0){
+        printf("arquivo nao foi aberto");;
+    }
+
+    printf("\n\n\tINCLUIR GRUPO\n");
+
+    printf("Nome do grupo:");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", g[*contador_grupo].nome_grupo);
+
+    printf("Tamanho do grupo: ");
+    scanf("%d", &g[*contador_grupo].tamanho_grupo);
+
+    for(j=0;j<g[*contador_grupo].tamanho_grupo;j++){
+        printf("Nome do user %d: ", j+1);
+        setbuf(stdin,NULL);
+        scanf("%[^\n]s", g[*contador_grupo].nome[j]);
+
+        printf("IP do user %d: ", j+1);
+        setbuf(stdin,NULL);
+        scanf("%[^\n]s", g[*contador_grupo].ip[j]);
+    }
+
+    printf("\n\nnome do grupo incluido:%s\n",g[*contador_grupo].nome_grupo);
+    (*contador_grupo)++;
+    printf("No de grupos: %d\n",(*contador_grupo)-1);
+
+    temp = fopen("dados/temp.txt", "w");
+    while( i < (*contador_grupo) ){
+        fprintf(temp, "%s %d\n", g[i].nome_grupo, g[i].tamanho_grupo);
+        for(j=0; j < g[i].tamanho_grupo ; j++ ){
+            fprintf(temp, "%s %s\n", g[i].nome[j], g[i].ip[j]);
+        }
+        i++;
+    }
+
+    fclose(arquivo);
+    fclose(temp);
+
+    //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
+    remove(banco_user_logado_grupo);
+    rename("dados/temp.txt", banco_user_logado_grupo);
 }
 
 
 void listar_grupos(tGrupo g[], int contador_grupo){
-//    int i;
-//    printf("\n\n\tLISTA DE PESSOAS\n\n");
-//    for(i=1;i<contador;i++){
-//        printf("CONTATO %d:\n",i);
-//        printf("nome: %s\n", p[i].nome);
-//        printf("telefone: %s\n", p[i].telefone);
-//        printf("ip: %s\n", p[i].ip);
-//        printf("\n");
-//    }
-//    printf("\n\n");
+    int i,j;
+    printf("\n\n\tLISTA DE GRUPOS\n\n");
+    printf("contador: %d grupos\n\n",contador_grupo-1);
+    for(i=1;i<contador_grupo;i++){
+        printf("GRUPO %d: %s\n",i, g[i].nome_grupo);
+        printf("tamanho: %d membros\n", g[i].tamanho_grupo);
+        for(j=0 ;    j < g[i].tamanho_grupo    ;   j++){
+            printf("(%d)  nome: %s", j+1,g[i].nome[j]);
+            printf("\tip: %s\n", g[i].ip[j]);
+        }
+        printf("\n");
+    }
 }
 
 
@@ -110,28 +120,28 @@ void remover_grupo(tGrupo g[], int *contador_grupo){
 //    setbuf(stdin,NULL);
 //    scanf("%[^\n]s", remover);
 //
-//    for(i=0;i<=*contador;i++){
-//        if (strcmp(remover, p[i].nome) == 0){
-//            printf("\n\npessoa achada e removida: %s\n", p[i].nome);
+//    for(i=0;i<=*contador_grupo;i++){
+//        if (strcmp(remover, g[i].nome) == 0){
+//            printf("\n\npessoa achada e removida: %s\n", g[i].nome);
 //
-//            strcpy(p[i].nome,p[(*contador)-1].nome);
-//            p[(*contador)-1].nome[0]='\0';
+//            strcpy(g[i].nome,g[(*contador_grupo)-1].nome);
+//            g[(*contador_grupo)-1].nome[0]='\0';
 //
-//            strcpy(p[i].telefone ,p[(*contador)-1].telefone);
-//            p[(*contador)-1].telefone[0]='\0';
+//            strcpy(g[i].telefone ,g[(*contador_grupo)-1].telefone);
+//            g[(*contador_grupo)-1].telefone[0]='\0';
 //
-//            strcpy(p[i].ip ,p[(*contador)-1].ip);
-//            p[(*contador)-1].ip[0]='\0';
+//            strcpy(g[i].ip ,g[(*contador_grupo)-1].ip);
+//            g[(*contador_grupo)-1].ip[0]='\0';
 //
-//            (*contador)--;
+//            (*contador_grupo)--;
 //            break;
 //        }
 //    }
 //
 //    temp = fopen("dados/temp.txt", "w+");
 //
-//    while( k < (*contador) ){
-//        fprintf(temp, "%s %s %s\n", p[k].nome, p[k].telefone, p[k].ip);
+//    while( k < (*contador_grupo) ){
+//        fprintf(temp, "%s %s %s\n", g[k].nome, g[k].telefone, g[k].ip);
 //        k++;
 //    }
 //

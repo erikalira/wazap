@@ -8,7 +8,6 @@ typedef struct pessoa{
 } tPessoa;
 
 struct pessoa p[50];
-char banco_user_logado[50];
 int contador;
 
 //FUNCOES

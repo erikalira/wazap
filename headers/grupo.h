@@ -2,9 +2,10 @@
 #define GRUPO_H_INCLUDED
 
 typedef struct grupo{
-    char nome[30];
-    char nomes[10][30];
-    char ips[10][20];
+    char nome_grupo[30];
+    int tamanho_grupo;
+    char nome[10][30];
+    char ip[10][20];
 } tGrupo;
 
 struct grupo g[50];

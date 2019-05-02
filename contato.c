@@ -41,7 +41,7 @@ void incluir_pessoa(tPessoa p[], int *contador){
     FILE *arquivo;
     FILE *temp;
 
-    arquivo = fopen(banco_user_logado, "r+");
+    arquivo = fopen(banco_user_logado_contato, "r+");
 
     if(arquivo==0){
         printf("arquivo nao foi aberto");;
@@ -76,8 +76,8 @@ void incluir_pessoa(tPessoa p[], int *contador){
     fclose(temp);
 
     //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
-    remove(banco_user_logado);
-    rename("dados/temp.txt", banco_user_logado);
+    remove(banco_user_logado_contato);
+    rename("dados/temp.txt", banco_user_logado_contato);
 }
 
 
@@ -104,7 +104,7 @@ void remover_pessoa(tPessoa p[], int *contador){
     FILE *arquivo;
     FILE *temp;
 
-    arquivo = fopen(banco_user_logado, "r+");
+    arquivo = fopen(banco_user_logado_contato, "r+");
 
     printf("\n\n\tREMOVER PESSOA\n");
     printf("Nome: ");
@@ -140,7 +140,7 @@ void remover_pessoa(tPessoa p[], int *contador){
     fclose(temp);
 
     //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
-    remove(banco_user_logado);
-    rename("dados/temp.txt", banco_user_logado);
+    remove(banco_user_logado_contato);
+    rename("dados/temp.txt", banco_user_logado_contato);
 }
 
