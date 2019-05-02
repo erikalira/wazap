@@ -72,7 +72,7 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     //-------------------------------------------
 
 
-    //CRIA UM ARQUIVO PARA ARMAZENAR CONTATOS DO USUARIO
+    //------**CRIA ARQUIVOS PARA ARMAZENAR CONTATOS DO USUARIO**----------
 
     //armazena o diretorio que o arquivo deve ser criado
     sprintf( arquivo_usuario, "dados/contatos_%s.txt", u[*contador_cadastro].username);
@@ -84,7 +84,22 @@ void cadastro_usuario(tUsuario u[], int *contador_cadastro){
     fprintf(criar_banco, "nome telefone ip\n");
 
     fclose(criar_banco);
-    //ARQUIVO CRIADO---------------------------
+    //--------------ARQUIVO CRIADO---------------------------
+
+
+    //--------**CRIA ARQUIVOS PARA ARMAZENAR GRUPOS**----------
+
+    //armazena o diretorio que o arquivo deve ser criado
+    sprintf( arquivo_usuario, "dados/grupos_%s.txt", u[*contador_cadastro].username);
+
+    //cria o arquivo para salvar grupos usuario
+    criar_banco = fopen(arquivo_usuario, "w");
+
+    //salva uma primeira linha com 0 para evitar erro
+    fprintf(criar_banco, "0\n");
+
+    fclose(criar_banco);
+    //---------------ARQUIVO CRIADO---------------------------
 
 
     //--------------------***CONFIRMACAO DE CADASTRO***-------------------
