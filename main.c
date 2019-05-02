@@ -2,15 +2,19 @@
 
 int main(){
 
-    cabecalho_zap();
+    do{
+        cabecalho_zap();
+        printf("modo: cliente ou servidor\n");
+        printf("digite opcao:");
 
+        setbuf(stdin,NULL);
+        scanf("%[^\n]s", modo); //usar esse modo de pegar string como padrao pois ele nao buga!!! e da pra fazer strcmp safe
 
-    printf("modo: cliente ou servidor\n");
-    printf("digite opcao:");
-
-    setbuf(stdin,NULL);
-    scanf("%[^\n]s", modo);
-
+        if( strcmp(modo,"cliente")!=0 && strcmp(modo,"servidor")!=0  ){
+            printf("\nOpcao incorreta!! Digite cliente ou servidor em portugues\n");
+            system("pause");
+        }
+    }while( strcmp(modo,"cliente")!=0 && strcmp(modo,"servidor")!=0  );
     printf("Entrando no modo %s\n", modo);
     system("pause");
 
