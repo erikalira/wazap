@@ -84,8 +84,10 @@ int conversa_contato_client(){
 
         // limpa o buffer
         memset(&message, 0, BUFFER_SIZE);
-        gets(message);
-        fflush(stdin);
+        //gets(message);
+        //fflush(stdin);
+        setbuf(stdin,NULL);
+        scanf("%[^\n]s", message);
 
         //message_length = strlen(message);
 
@@ -109,7 +111,7 @@ int conversa_contato_client(){
         }
     }while(strcmp(message, EXIT_CALL_STRING)); // sai quando enviar um "#sair" para o servidor
     send(remote_socket, "client saiu da conversa!!", 115, 0);
-    printf("\nsaindo da conversao com o contato..\n");
+    //printf("\nsaindo da conversao com o contato..\n");
 
     desconectar_client();
     system("PAUSE");
@@ -130,14 +132,8 @@ void conectar_client(){
     setbuf(stdin,NULL);
     scanf("%[^\n]s", contato);
 
-//    printf("IP do servidor: ");
-//    scanf("%s", remote_ip);
-//    fflush(stdin);
-//
-//    printf("Porta do servidor: ");
-//    scanf("%d", &remote_port);
-//    fflush(stdin);
-
+    printf("Porta: ");
+    scanf("%d", &remote_port);
 
     for(i=0;i<=contador;i++){
         if (strcmp(contato, p[i].nome) == 0){
@@ -146,7 +142,7 @@ void conectar_client(){
         }
     }
 
-    printf("CONTATO %d:\n",i);
+    printf("\nCONTATO %d:\n",i);
     printf("nome: %s\n", p[i].nome);
     printf("telefone: %s\n", p[i].telefone);
     printf("ip: %s\n", p[i].ip);
@@ -161,7 +157,7 @@ void conectar_client(){
     // preenchendo o remote_address (servidor)
     memset(&remote_address, 0, sizeof(remote_address));
     remote_address.sin_family = AF_INET;
-    remote_address.sin_addr.s_addr = inet_addr("127.0.0.1");
+    remote_address.sin_addr.s_addr = inet_addr(remote_ip);
     remote_address.sin_port = htons(remote_port);
 
     printf("\n\nconectando com %s\n",p[i].nome);
@@ -175,7 +171,7 @@ void conectar_client(){
 
 void desconectar_client(){
 
-    printf("encerrando conexao\n");
+    printf("encerrando conversa\n");
     WSACleanup();
     closesocket(remote_socket);
     //system("PAUSE");
@@ -217,7 +213,6 @@ void conversa_contato_server(){
 
     conectar_server();
 
-
     do
     {
         // limpa o buffer
@@ -236,7 +231,9 @@ void conversa_contato_server(){
             printf("digite msg: ");
             // limpa o buffer
             memset(&message, 0, BUFFER_SIZE);
-            fgets(message,255,stdin);
+            //fgets(message,255,stdin);
+            setbuf(stdin,NULL);
+            scanf("%[^\n]s", message);
 
             // envia a mensagem para o client
             send(remote_socket, message, 115, 0);
@@ -314,7 +311,7 @@ void conectar_server(){
 }
 
 void desconectar_server(){
-    printf("encerrando\n");
+    printf("encerrando conversa\n");
     WSACleanup();
     closesocket(local_socket);
     closesocket(remote_socket);

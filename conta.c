@@ -5,8 +5,14 @@ problemas:
 soluções possiveis:
 a) colocar um outro caractere no espaço do nome para a leitura do fprintf ser corrigida
 ex: nome ="erika lira" salvar no arquivo como "erika.lira"
-
+b) salvar no arquivo cada linha uma informacao diferente
+ex ao inves de: erika lira 88232-23222 127.0.0.1
+salvar como:
+erika lira
+88232-23222
+127.0.0.1
 */
+
 #include "headers.h"
 
 void banco_usuarios(char op[]) {
