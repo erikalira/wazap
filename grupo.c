@@ -105,51 +105,56 @@ void listar_grupos(tGrupo g[], int contador_grupo){
 
 
 void remover_grupo(tGrupo g[], int *contador_grupo){
-//    char remover[40];
-//    int i;
-//
-//    int k=0;
-//
-//    FILE *arquivo;
-//    FILE *temp;
-//
-//    arquivo = fopen(banco_user_logado, "r+");
-//
-//    printf("\n\n\tREMOVER PESSOA\n");
-//    printf("Nome: ");
-//    setbuf(stdin,NULL);
-//    scanf("%[^\n]s", remover);
-//
-//    for(i=0;i<=*contador_grupo;i++){
-//        if (strcmp(remover, g[i].nome) == 0){
-//            printf("\n\npessoa achada e removida: %s\n", g[i].nome);
-//
-//            strcpy(g[i].nome,g[(*contador_grupo)-1].nome);
+    char remover[40];
+    int i,j;
+
+    FILE *arquivo;
+    FILE *temp;
+
+    arquivo = fopen(banco_user_logado_grupo, "r+");
+
+    printf("\n\n\tREMOVER GRUPO\n");
+    printf("Nome: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", remover);
+
+    for(i=1;i<=*contador_grupo;i++){
+        if (strcmp(remover, g[i].nome_grupo) == 0){
+            printf("\n\ngrupo achado e removido: %s\n", g[i].nome_grupo);
+
+            strcpy(g[i].nome_grupo,g[(*contador_grupo)-1].nome_grupo);
 //            g[(*contador_grupo)-1].nome[0]='\0';
-//
-//            strcpy(g[i].telefone ,g[(*contador_grupo)-1].telefone);
-//            g[(*contador_grupo)-1].telefone[0]='\0';
-//
-//            strcpy(g[i].ip ,g[(*contador_grupo)-1].ip);
-//            g[(*contador_grupo)-1].ip[0]='\0';
-//
-//            (*contador_grupo)--;
-//            break;
-//        }
-//    }
-//
-//    temp = fopen("dados/temp.txt", "w+");
-//
-//    while( k < (*contador_grupo) ){
-//        fprintf(temp, "%s %s %s\n", g[k].nome, g[k].telefone, g[k].ip);
-//        k++;
-//    }
-//
-//    fclose(arquivo);
-//    fclose(temp);
-//
-//    //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
-//    remove(banco_user_logado);
-//    rename("dados/temp.txt", banco_user_logado);
+
+            g[i].tamanho_grupo = g[(*contador_grupo)-1].tamanho_grupo;
+
+            for(j=0;j<  g[i].tamanho_grupo  ;   j++){
+                strcpy(g[i].nome[j] ,g[(*contador_grupo)-1].nome[j]);
+    //            g[(*contador_grupo)-1].telefone[0]='\0';
+
+                strcpy(g[i].ip[j] ,g[(*contador_grupo)-1].ip[j]);
+    //            g[(*contador_grupo)-1].ip[0]='\0';
+            }
+            (*contador_grupo)--;
+
+            break;
+        }
+    }
+
+    temp = fopen("dados/temp.txt", "w+");
+    i=0;
+    while( i < (*contador_grupo) ){
+        fprintf(temp, "%s %d\n", g[i].nome_grupo, g[i].tamanho_grupo);
+        for(j=0; j < g[i].tamanho_grupo ; j++ ){
+            fprintf(temp, "%s %s\n", g[i].nome[j], g[i].ip[j]);
+        }
+        i++;
+    }
+
+    fclose(arquivo);
+    fclose(temp);
+
+    //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
+    remove(banco_user_logado_grupo);
+    rename("dados/temp.txt", banco_user_logado_grupo);
 }
 
