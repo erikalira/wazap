@@ -7,7 +7,7 @@ void escolher_conversa_client();
 
 int conversa_contato_client();
 
-void conversa_grupo_client();
+int conversa_grupo_client();
 
 void conectar_client();
 
@@ -20,7 +20,7 @@ void escolher_conversa_server();
 
 int conversa_contato_server();
 
-void conversa_grupo_server();
+int conversa_grupo_server();
 
 void conectar_server();
 

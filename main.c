@@ -3,27 +3,22 @@
 void cabecalho_zap()
 {
     system("cls");
-    printf("\n\t\tZ A P NUTELLA\n\n");
+    printf("\n\t\tZ A P NUTELLA (%s)\n\n", modo);
 }
 
-int main(){
+int main(int argc, char *argv[]){
     // MODO CLIENTE OU SERVIDOR
-    do{
-        cabecalho_zap();
-        printf("modo: cliente ou servidor\n");
-        printf("digite opcao:");
+    if (argc < 2) {
+       fprintf(stderr,"faltou dizer se eh servidor ou cliente\n");
+       exit(0);
+    }
 
-        setbuf(stdin,NULL);
-        scanf("%[^\n]s", modo); //usar esse modo de pegar string como padrao pois ele nao buga!!! e da pra fazer strcmp safe
+    if( strcmp("servidor",argv[1])  != 0  &&  strcmp("cliente",argv[1])  != 0  ){
+        fprintf(stderr,"modo invalido!! dizer se eh servidor ou cliente\n");
+        exit(0);
+    }
 
-        if( strcmp(modo,"cliente")!=0 && strcmp(modo,"servidor")!=0  ){
-            printf("\nOpcao incorreta!! Digite cliente ou servidor em portugues\n");
-            system("pause");
-        }
-    }while( strcmp(modo,"cliente")!=0 && strcmp(modo,"servidor")!=0  );
-
-    printf("Entrando no modo %s\n", modo);
-    system("pause");
+    strcpy(modo, argv[1]);
 
     int op;
     do{

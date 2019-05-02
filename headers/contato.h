@@ -16,10 +16,10 @@ void agenda();
 
 void incluir_pessoa(tPessoa p[], int *contador);
 
-void listar_pessoas(tPessoa p[], int contador);
+void listar_pessoas();
 
 void remover_pessoa(tPessoa p[], int *contador);
 
-
+void editar_pessoa(tPessoa p[]);
 
 #endif // AGENDA_H_INCLUDED

@@ -243,12 +243,8 @@ void logado( char user[] ) {
                 break;
             case 4:
                 if(  strcmp(modo,"cliente") == 0  ){
-                    printf("Entrando em -iniciar conversa- \n");
-                    system("pause");
                     escolher_conversa_client(); //Iniciar conversa
                 }if(  strcmp(modo,"servidor") == 0  ){
-                    printf("Entrando em -participar de conversa- \n");
-                    system("pause");
                     escolher_conversa_server(); //Participar de conversa
                 }
                 break;
@@ -271,9 +267,9 @@ void contas(){
         //MENU
         printf("\t GERENCIAR CONTAS\n\n");
         printf("1-Criar conta\n");
-        printf("2-Editar conta (EM CONSTRUCAO)\n");
-        printf("3-Lista de contas\n");
-        printf("4-Excluir conta\n");
+        printf("2-Editar conta\n");
+        printf("3-Excluir conta\n");
+        printf("4-Lista de contas\n");
         printf("5-Voltar\n\n");
 
         printf("digite opcao:");
@@ -286,15 +282,16 @@ void contas(){
                 break;
             case 2:
                 //EDITAR CONTA
-
+                editar_cadastro(u);
                 break;
             case 3:
-                //LISTA DE CONTAS
-                listar_usuarios();
-                break;
-            case 4:
                 //EXCLUI CONTA
                 remover_cadastro(u, &contador_cadastro);
+                break;
+            case 4:
+                //LISTA DE CONTAS
+                listar_usuarios();
+
                 break;
             default:
                 break;
@@ -361,6 +358,55 @@ void remover_cadastro(tUsuario u[], int *contador_cadastro){
     temp = fopen("dados/temp.txt", "w+");
 
     while( k < (*contador_cadastro) ){
+        fprintf(temp, "%s %s %s\n", u[k].nome, u[k].username, u[k].senha);
+        k++;
+    }
+
+    fclose(arquivo);
+    fclose(temp);
+
+    //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
+    remove("dados/contas.txt");
+    rename("dados/temp.txt", "dados/contas.txt");
+}
+
+void editar_cadastro(tUsuario u[]){
+    char editar[40];
+    int i;
+    int k=0;
+
+    FILE *arquivo;
+    FILE *temp;
+
+    arquivo = fopen("dados/contas.txt", "r+");
+
+    printf("\n\n\tEDITAR CADASTRO\n");
+    printf("Username: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", editar);
+
+    for(i=0;i<=contador_cadastro;i++){
+        if (strcmp(editar, u[i].username) == 0){
+            printf("\n\npessoa achada: %s\n", u[i].nome);
+
+            printf("Nome: ");
+            setbuf(stdin,NULL);
+            scanf("%[^\n]s", u[i].nome);
+
+            printf("Usuario: ");
+            setbuf(stdin,NULL);
+            scanf("%[^\n]s", u[i].username);
+
+            printf("Senha: ");
+            setbuf(stdin,NULL);
+            scanf("%[^\n]s", u[i].senha);
+            break;
+        }
+    }
+
+    temp = fopen("dados/temp.txt", "w+");
+
+    while( k < contador_cadastro ){
         fprintf(temp, "%s %s %s\n", u[k].nome, u[k].username, u[k].senha);
         k++;
     }

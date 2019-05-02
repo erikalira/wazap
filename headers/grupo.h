@@ -17,8 +17,10 @@ void agenda_grupo();
 
 void incluir_grupo(tGrupo g[], int *contador_grupo);
 
-void listar_grupos(tGrupo g[], int contador_grupo);
+void listar_grupos(tGrupo g[]);
 
 void remover_grupo(tGrupo g[], int *contador_grupo);
+
+void editar_grupo(tGrupo g[]);
 
 #endif // GRUPO_H_INCLUDED

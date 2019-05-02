@@ -111,8 +111,75 @@ int conversa_contato_client(){
     return 0;
 }
 
-void conversa_grupo_client(){
+int conversa_grupo_client(){
+    int i;
+    int grupo_selecionado;
 
+    printf("nome do grupo:");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", contato);
+
+    printf("Porta: ");
+    scanf("%d", &remote_port);
+
+    for(i=0;i<=contador;i++){
+        if (strcmp(contato, g[i].nome_grupo) == 0){
+            grupo_selecionado=i;
+            break;
+        }
+    }
+
+    do{
+        printf("digite as mensagens     //para sair da conversa digite #sair\n");
+        printf("digite msg: ");
+        // limpa o buffer
+        memset(&message, 0, BUFFER_SIZE);
+        setbuf(stdin,NULL);
+        scanf("%[^\n]s", message);
+
+        for(i=0 ; i < g[grupo_selecionado].tamanho_grupo ; i++){
+            //-----------------------------***CONECTAR------------
+            if (WSAStartup(MAKEWORD(2, 0), &wsa_data) != 0)
+                msg_err_exit("WSAStartup() failed\n");
+
+            strcpy(remote_ip, g[grupo_selecionado].ip[i]);
+
+            remote_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+            if (remote_socket == INVALID_SOCKET)
+            {
+                WSACleanup();
+                msg_err_exit("socket() failed\n");
+            }
+
+            // preenchendo o remote_address (servidor)
+            memset(&remote_address, 0, sizeof(remote_address));
+            remote_address.sin_family = AF_INET;
+            remote_address.sin_addr.s_addr = inet_addr(remote_ip);
+            remote_address.sin_port = htons(remote_port);
+
+            if (connect(remote_socket, (struct sockaddr *) &remote_address, sizeof(remote_address)) == SOCKET_ERROR)
+            {
+                WSACleanup();
+                msg_err_exit("connect() failed\n");
+            }
+
+            //--------------------------FIM CONECTAR---------------------------
+            if(sem_conexao==1){
+                sem_conexao=0;
+                return 0;
+            }
+
+            // envia a mensagem para o servidor
+            if (send(remote_socket, message, 115, 0) == SOCKET_ERROR)
+            {
+                WSACleanup();
+                closesocket(remote_socket);
+                msg_err_exit("send() failed\n");
+            }
+            desconectar_client();
+        }
+    }while(strcmp(message, EXIT_CALL_STRING)); // sai quando enviar um "#sair" para o servidor
+    return 0;
 }
 
 void conectar_client(){
@@ -204,6 +271,14 @@ void escolher_conversa_server(){
 
 int conversa_contato_server(){
 
+    printf("Porta local: ");
+    scanf("%d", &local_port);
+    fflush(stdin);
+
+    printf("Contato: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", contato);
+
     conectar_server();
     if(sem_conexao==1){
         sem_conexao=0;
@@ -244,8 +319,40 @@ int conversa_contato_server(){
     return 0;
 }
 
-void conversa_grupo_server(){
+int conversa_grupo_server(){
 
+
+    printf("Porta local: ");
+    scanf("%d", &local_port);
+    fflush(stdin);
+
+    printf("Grupo: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", contato);
+    do{
+        conectar_server();
+        if(sem_conexao==1){
+            sem_conexao=0;
+            return 0;
+        }
+
+        // limpa o buffer
+        memset(&message, 0, BUFFER_SIZE);
+
+        // recebe a mensagem do cliente
+        message_length = recv(remote_socket, message, BUFFER_SIZE, 0);
+        if(message_length == SOCKET_ERROR)
+            msg_err_exit("recv() failed\n");
+
+        // exibe a mensagem na tela
+        //printf("%s: %s\n", inet_ntoa(remote_address.sin_addr), message);
+        printf("%s: %s\n", contato, message);
+
+        desconectar_server();
+
+    }while(strcmp(message, EXIT_CALL_STRING)); // sai quando receber um "#sair" do cliente
+
+    return 0;
 }
 
 void conectar_server(){
@@ -260,14 +367,6 @@ void conectar_server(){
         WSACleanup();
         msg_err_exit("socket() failed\n");
     }
-
-    printf("Porta local: ");
-    scanf("%d", &local_port);
-    fflush(stdin);
-
-    printf("Contato: ");
-    setbuf(stdin,NULL);
-    scanf("%[^\n]s", contato);
 
     // zera a estrutura local_address
     memset(&local_address, 0, sizeof(local_address));
@@ -330,7 +429,4 @@ void desconectar_server(){
     closesocket(remote_socket);
     //system("PAUSE");
 }
-
-
-
 
