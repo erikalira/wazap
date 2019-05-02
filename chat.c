@@ -20,6 +20,7 @@ char message[BUFFER_SIZE];
 
 char contato[30];
 int sem_conexao=0;
+char ip_conectado[20];
 
 struct sockaddr_in local_address;
 struct sockaddr_in remote_address;
@@ -216,8 +217,8 @@ int conversa_contato_server(){
             msg_err_exit("recv() failed\n");
 
         // exibe a mensagem na tela
-        printf("%s: %s\n", inet_ntoa(remote_address.sin_addr), message);
-
+        //printf("%s: %s\n", inet_ntoa(remote_address.sin_addr), message);
+        printf("%s: %s\n", contato, message);
 
         if(   strcmp(message, EXIT_CALL_STRING) !=0 ){
             printf("digite msg: ");
@@ -260,6 +261,10 @@ void conectar_server(){
     scanf("%d", &local_port);
     fflush(stdin);
 
+    printf("Contato: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", contato);
+
     // zera a estrutura local_address
     memset(&local_address, 0, sizeof(local_address));
 
@@ -290,7 +295,7 @@ void conectar_server(){
 
     remote_length = sizeof(remote_address);
 
-    printf("aguardando alguma conexao...\n");
+    printf("aguardando %s entrar na conversa...\n", contato);
     remote_socket = accept(local_socket, (struct sockaddr *) &remote_address, &remote_length);
     if(remote_socket == INVALID_SOCKET)
     {
@@ -299,8 +304,18 @@ void conectar_server(){
         msg_err_exit("accept() failed\n");
     }
 
-    printf("conexao estabelecida com %s\n", inet_ntoa(remote_address.sin_addr));
-    printf("aguardando mensagens...\n");
+    //strcpy(ip_conectado ,  inet_ntoa(remote_address.sin_addr)  ) ;
+
+    //printf("%s\n",ip_conectado);
+
+    for(i=0;i<=contador;i++){
+        if (    strcmp(     inet_ntoa(remote_address.sin_addr)  ,   p[i].ip     ) == 0    ){
+            strcpy(contato, p[i].nome);
+            break;
+        }
+    }
+    printf("%s entrou na conversa\n", contato);
+    printf("aguardando mensagens de %s...\n", contato);
 
 }
 

@@ -23,4 +23,6 @@ void contas();
 
 void listar_usuarios();
 
+void remover_cadastro(tUsuario u[], int *contador_cadastro);
+
 #endif // CADASTRO_H_INCLUDED

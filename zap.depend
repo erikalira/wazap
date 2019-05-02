@@ -214,7 +214,7 @@
 	"contato.h"
 	"menus.h"
 
-1556754638 source:c:\users\erika\documents\github\wazap\conta.c
+1556773863 source:c:\users\erika\documents\github\wazap\conta.c
 	"headers.h"
 
 1556423011 c:\users\erika\documents\github\wazap\conta.h
@@ -226,10 +226,10 @@
 1556424236 source:c:\users\erika\documents\github\wazap\contato.c
 	"headers.h"
 
-1556745237 source:c:\users\erika\documents\github\wazap\main.c
+1556756274 source:c:\users\erika\documents\github\wazap\main.c
 	"headers.h"
 
-1556751413 source:c:\users\erika\documents\github\wazap\menus.c
+1556774592 source:c:\users\erika\documents\github\wazap\menus.c
 	"headers.h"
 
 1556745237 c:\users\erika\documents\github\wazap\headers.h
@@ -244,7 +244,7 @@
 
 1556592269 c:\users\erika\documents\github\wazap\chat.h
 
-1556755701 source:c:\users\erika\documents\github\wazap\chat.c
+1556771999 source:c:\users\erika\documents\github\wazap\chat.c
 	"headers.h"
 
 1556595615 c:\users\erika\documents\github\wazap\conexao.h
@@ -252,7 +252,7 @@
 1556595615 source:c:\users\erika\documents\github\wazap\conexao.c
 	"headers.h"
 
-1556423011 c:\users\erika\documents\github\wazap\headers\conta.h
+1556773492 c:\users\erika\documents\github\wazap\headers\conta.h
 
 1556741439 c:\users\erika\documents\github\wazap\headers\contato.h
 

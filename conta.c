@@ -241,7 +241,7 @@ void contas(){
                 break;
             case 4:
                 //EXCLUI CONTA
-
+                remover_cadastro(u, &contador_cadastro);
                 break;
             default:
                 break;
@@ -263,7 +263,7 @@ void listar_usuarios(){
     cabecalho_zap();
     printf("\n\n\tLISTA DE USUARIOS\n\n");
     for(i=1;i<contador_cadastro;i++){
-        printf("CONTATO %d:\n",i);
+        printf("CONTA %d:\n",i);
         printf("nome: %s\n", u[i].nome);
         printf("username: %s\n", u[i].username);
         printf("\n");
@@ -272,3 +272,50 @@ void listar_usuarios(){
 }
 
 
+void remover_cadastro(tUsuario u[], int *contador_cadastro){
+    char remover[40];
+    int i;
+    int k=0;
+
+    FILE *arquivo;
+    FILE *temp;
+
+    arquivo = fopen("dados/contas.txt", "r+");
+
+    printf("\n\n\tREMOVER CADASTRO\n");
+    printf("Username: ");
+    setbuf(stdin,NULL);
+    scanf("%[^\n]s", remover);
+
+    for(i=0;i<=*contador_cadastro;i++){
+        if (strcmp(remover, u[i].username) == 0){
+            printf("\n\npessoa achada e removida: %s\n", u[i].nome);
+
+            strcpy(p[i].nome,u[(*contador_cadastro)-1].nome);
+            u[(*contador_cadastro)-1].nome[0]='\0';
+
+            strcpy(u[i].username ,u[(*contador_cadastro)-1].username);
+            u[(*contador_cadastro)-1].username[0]='\0';
+
+            strcpy(u[i].senha ,u[(*contador_cadastro)-1].senha);
+            u[(*contador_cadastro)-1].senha[0]='\0';
+
+            (*contador_cadastro)--;
+            break;
+        }
+    }
+
+    temp = fopen("dados/temp.txt", "w+");
+
+    while( k < (*contador_cadastro) ){
+        fprintf(temp, "%s %s %s\n", u[k].nome, u[k].username, u[k].senha);
+        k++;
+    }
+
+    fclose(arquivo);
+    fclose(temp);
+
+    //remove o arquivo atual e renomeia o temporario para o nome do arquivo original
+    remove("dados/contas.txt");
+    rename("dados/temp.txt", "dados/contas.txt");
+}

@@ -1,0 +1,2 @@
+nome telefone ip
+elis 127.0.0.1 127.0.0.1
