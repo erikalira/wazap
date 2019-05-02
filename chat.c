@@ -58,14 +58,6 @@ void escolher_conversa_client (){
 
         system("cls");
     }while(op!=3);
-
-//    // envia a mensagem para o servidor para sair do socket
-//    if (send(remote_socket, "#sair", 155, 0) == SOCKET_ERROR)
-//    {
-//        WSACleanup();
-//        closesocket(remote_socket);
-//        msg_err_exit("send() failed\n");
-//    }
 }
 
 int conversa_contato_client(){
@@ -84,12 +76,8 @@ int conversa_contato_client(){
 
         // limpa o buffer
         memset(&message, 0, BUFFER_SIZE);
-        //gets(message);
-        //fflush(stdin);
         setbuf(stdin,NULL);
         scanf("%[^\n]s", message);
-
-        //message_length = strlen(message);
 
         // envia a mensagem para o servidor
         if (send(remote_socket, message, 115, 0) == SOCKET_ERROR)
