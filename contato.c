@@ -4,7 +4,12 @@ void agenda() {
     int op;
     do{
         cabecalho_zap();
-        menu_agenda();
+        //MENU
+        printf("\t GERENCIAR CONTATOS\n\n");
+        printf("1: Incluir contato\n");
+        printf("2: Lista de contatos\n");
+        printf("3: Remover contato\n");
+        printf("4: voltar ao menu principal!!!\n\n");
 
         printf("digite opcao:");
         scanf("%d",&op);
@@ -26,7 +31,7 @@ void agenda() {
         system("cls");
     }while(op!=4);
 
-    printf("\n\n\tSaindo da agenda!\n\n\n");
+    printf("\n\n\tSaindo da agenda de contatos!\n\n\n");
 }
 
 

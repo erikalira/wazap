@@ -1,7 +1,13 @@
 #include "headers.h"
 
-int main(){
+void cabecalho_zap()
+{
+    system("cls");
+    printf("\n\t\tZ A P NUTELLA\n\n");
+}
 
+int main(){
+    // MODO CLIENTE OU SERVIDOR
     do{
         cabecalho_zap();
         printf("modo: cliente ou servidor\n");
@@ -15,13 +21,18 @@ int main(){
             system("pause");
         }
     }while( strcmp(modo,"cliente")!=0 && strcmp(modo,"servidor")!=0  );
+
     printf("Entrando no modo %s\n", modo);
     system("pause");
 
     int op;
     do{
         cabecalho_zap();
-        menu_login();
+        //MENU
+        printf("1: Login\n");
+        printf("2: Criar conta\n");
+        printf("3: SAIR DA APLICACAO!!!\n\n");
+
         printf("digite opcao:");
         scanf("%d", &op);
 

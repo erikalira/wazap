@@ -7,11 +7,12 @@
 #include <winsock.h>
 
 #include "headers/contato.h"
-#include "headers/menus.h"
 #include "headers/chat.h"
 #include "headers/conta.h"
 #include "headers/grupo.h"
 
 char modo[10];
+
+void cabecalho_zap();
 
 #endif // HEADERS_H_INCLUDED

@@ -42,7 +42,11 @@ void escolher_conversa_client (){
     int op;
     do{
         cabecalho_zap();
-        menu_conversas();
+        //MENU
+        printf("\t INICIAR CONVERSA\n\n");
+        printf("1-Iniciar conversa com contato\n");
+        printf("2-Iniciar conversa com grupo (EM CONSTRUCAO)\n");
+        printf("3-Voltar\n\n");
 
         printf("digite opcao:");
         scanf("%d",&op);

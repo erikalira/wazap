@@ -192,9 +192,17 @@ void logado( char user[] ) {
         cabecalho_zap();
 
         if(  strcmp(modo,"cliente") == 0  ){
-            menu_logado();
+            printf("1-Gerenciar contas\n");
+            printf("2-Gerenciar contatos \n");
+            printf("3-Gerenciar grupos (EM CONSTRUCAO)\n");
+            printf("4-Iniciar conversa\n");
+            printf("5-Sair da conta!!!\n\n");
         }else if(  strcmp(modo,"servidor") == 0  ){
-            menu_logado_server();
+            printf("1-Gerenciar contas\n");
+            printf("2-Gerenciar contatos \n");
+            printf("3-Gerenciar grupos (EM CONSTRUCAO)\n");
+            printf("4-Participar de uma conversa\n");
+            printf("5-Sair da conta!!!\n\n");
 
         }else{
             printf("Nao ACHOU NENUMA OPCAO DE MODDOO!!!");
@@ -237,7 +245,14 @@ void contas(){
     int op;
     do{
         cabecalho_zap();
-        menu_contas();
+        //MENU
+        printf("\t GERENCIAR CONTAS\n\n");
+        printf("1-Criar conta\n");
+        printf("2-Editar conta (EM CONSTRUCAO)\n");
+        printf("3-Lista de contas\n");
+        printf("4-Excluir conta\n");
+        printf("5-Voltar\n\n");
+
         printf("digite opcao:");
         scanf("%d", &op);
 
