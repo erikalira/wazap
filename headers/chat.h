@@ -18,7 +18,7 @@ void desconectar_client();
 
 void escolher_conversa_server();
 
-void conversa_contato_server();
+int conversa_contato_server();
 
 void conversa_grupo_server();
 

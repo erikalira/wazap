@@ -209,9 +209,13 @@ void escolher_conversa_server(){
     }while(op!=3);
 }
 
-void conversa_contato_server(){
+int conversa_contato_server(){
 
     conectar_server();
+    if(sem_conexao==1){
+        sem_conexao=0;
+        return 0;
+    }
 
     do
     {
@@ -243,6 +247,8 @@ void conversa_contato_server(){
     desconectar_server();
 
     system("PAUSE");
+
+    return 0;
 }
 
 void conversa_grupo_server(){
