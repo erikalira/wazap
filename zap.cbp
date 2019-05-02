@@ -40,10 +40,14 @@
 		<Unit filename="contato.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="grupo.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="headers.h" />
 		<Unit filename="headers/chat.h" />
 		<Unit filename="headers/conta.h" />
 		<Unit filename="headers/contato.h" />
+		<Unit filename="headers/grupo.h" />
 		<Unit filename="headers/menus.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />

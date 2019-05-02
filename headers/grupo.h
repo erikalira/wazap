@@ -1,0 +1,6 @@
+#ifndef GRUPO_H_INCLUDED
+#define GRUPO_H_INCLUDED
+
+
+
+#endif // GRUPO_H_INCLUDED

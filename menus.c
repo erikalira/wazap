@@ -54,6 +54,6 @@ void menu_contas(){
     printf("1-Criar conta\n");
     printf("2-Editar conta (EM CONSTRUCAO)\n");
     printf("3-Lista de contas\n");
-    printf("4-Excluir conta(EM CONSTRUCAO)\n");
+    printf("4-Excluir conta\n");
     printf("5-Voltar\n\n");
 }
